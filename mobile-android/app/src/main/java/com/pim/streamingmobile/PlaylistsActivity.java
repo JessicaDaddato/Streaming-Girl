@@ -1,14 +1,20 @@
 package com.pim.streamingmobile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +22,15 @@ import java.util.List;
 public class PlaylistsActivity extends AppCompatActivity {
 
     Button btnVoltarPlaylists, btnPlaylist1, btnPlaylist2, btnPlaylist3;
-    Button btnCriarPlaylist, btnAtualizarPlaylist, btnExcluirPlaylist;
+    Button btnCriarPlaylist, btnAtualizarPlaylist, btnExcluirPlaylist, btnEnviarArquivo;
     EditText edtNomePlaylist;
     LinearLayout layoutFavoritos, layoutPlaylistsApi;
-    TextView txtPlaylistSelecionada, txtStatusCrud;
+    TextView txtPlaylistSelecionada, txtStatusCrud, txtArquivoSelecionado;
     private final List<PlaylistItem> playlists = new ArrayList<>();
     private PlaylistItem playlistSelecionada;
     private static final int USUARIO_PADRAO_ID = 1;
+    private final ActivityResultLauncher<String> seletorArquivo =
+            registerForActivityResult(new ActivityResultContracts.GetContent(), this::processarArquivoSelecionado);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +44,11 @@ public class PlaylistsActivity extends AppCompatActivity {
         btnCriarPlaylist = findViewById(R.id.btnCriarPlaylist);
         btnAtualizarPlaylist = findViewById(R.id.btnAtualizarPlaylist);
         btnExcluirPlaylist = findViewById(R.id.btnExcluirPlaylist);
+        btnEnviarArquivo = findViewById(R.id.btnEnviarArquivo);
         edtNomePlaylist = findViewById(R.id.edtNomePlaylist);
         txtPlaylistSelecionada = findViewById(R.id.txtPlaylistSelecionada);
         txtStatusCrud = findViewById(R.id.txtStatusCrud);
+        txtArquivoSelecionado = findViewById(R.id.txtArquivoSelecionado);
         layoutFavoritos = findViewById(R.id.layoutFavoritos);
         layoutPlaylistsApi = findViewById(R.id.layoutPlaylistsApi);
 
@@ -46,10 +56,12 @@ public class PlaylistsActivity extends AppCompatActivity {
         btnCriarPlaylist.setOnClickListener(v -> criarPlaylist());
         btnAtualizarPlaylist.setOnClickListener(v -> atualizarPlaylist());
         btnExcluirPlaylist.setOnClickListener(v -> excluirPlaylist());
+        btnEnviarArquivo.setOnClickListener(v -> abrirSeletorArquivo());
 
         carregarPlaylists();
         renderizarFavoritos();
         atualizarEstadoCrud();
+        txtArquivoSelecionado.setText(UploadsManager.getUltimoUpload(this));
     }
 
     private void carregarPlaylists() {
@@ -118,8 +130,8 @@ public class PlaylistsActivity extends AppCompatActivity {
     private void selecionarPlaylist(PlaylistItem playlist) {
         playlistSelecionada = playlist;
         edtNomePlaylist.setText(playlist.nome);
-        txtPlaylistSelecionada.setText("Selecionada: " + playlist.nome + " (ID " + playlist.id + ")");
-        txtStatusCrud.setText("Playlist pronta para PUT/DELETE.");
+        txtPlaylistSelecionada.setText("Selecionada: " + playlist.nome);
+        txtStatusCrud.setText("Playlist pronta para editar ou excluir.");
     }
 
     private PlaylistItem localizarPlaylistPorId(int playlistId) {
@@ -136,7 +148,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         String nome = edtNomePlaylist.getText().toString().trim();
 
         if (token.isBlank()) {
-            Toast.makeText(this, "Faça login JWT na tela inicial primeiro.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Faça login antes de criar uma playlist.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -147,9 +159,9 @@ public class PlaylistsActivity extends AppCompatActivity {
 
         txtStatusCrud.setText("Criando playlist...");
         ApiClient.createPlaylist(token, nome, USUARIO_PADRAO_ID, new ApiClient.ApiCallback<PlaylistItem>() {
-            @Override
-            public void onSuccess(PlaylistItem result) {
-                runOnUiThread(() -> {
+                    @Override
+                    public void onSuccess(PlaylistItem result) {
+                        runOnUiThread(() -> {
                     txtStatusCrud.setText("Playlist criada com sucesso.");
                     edtNomePlaylist.setText("");
                     carregarPlaylists();
@@ -171,7 +183,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         String nome = edtNomePlaylist.getText().toString().trim();
 
         if (token.isBlank()) {
-            Toast.makeText(this, "Faça login JWT na tela inicial primeiro.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Faça login antes de atualizar uma playlist.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -210,7 +222,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         String token = AuthManager.getToken(this);
 
         if (token.isBlank()) {
-            Toast.makeText(this, "Faça login JWT na tela inicial primeiro.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Faça login antes de excluir uma playlist.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -249,7 +261,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         btnExcluirPlaylist.setEnabled(logado);
 
         if (!logado) {
-            txtStatusCrud.setText("Login necessario apenas para testes tecnicos do CRUD da API.");
+            txtStatusCrud.setText("Entre para criar, editar ou excluir playlists.");
             txtPlaylistSelecionada.setText("Nenhuma playlist selecionada.");
             return;
         }
@@ -264,7 +276,7 @@ public class PlaylistsActivity extends AppCompatActivity {
 
         if (playlists.isEmpty()) {
             TextView vazio = new TextView(this);
-            vazio.setText("Nenhuma playlist carregada do backend.");
+            vazio.setText("Nenhuma playlist encontrada.");
             vazio.setTextColor(getResources().getColor(R.color.text_soft));
             layoutPlaylistsApi.addView(vazio);
             return;
@@ -291,6 +303,42 @@ public class PlaylistsActivity extends AppCompatActivity {
 
             layoutPlaylistsApi.addView(botao);
         }
+    }
+
+    private void abrirSeletorArquivo() {
+        seletorArquivo.launch("*/*");
+    }
+
+    private void processarArquivoSelecionado(Uri uri) {
+        if (uri == null) {
+            txtArquivoSelecionado.setText("Nenhum arquivo selecionado.");
+            return;
+        }
+
+        String nomeArquivo = resolverNomeArquivo(uri);
+        UploadsManager.registrarUpload(this, nomeArquivo);
+        txtArquivoSelecionado.setText("Arquivo selecionado: " + nomeArquivo);
+        Toast.makeText(this, "Arquivo pronto para envio.", Toast.LENGTH_SHORT).show();
+    }
+
+    private String resolverNomeArquivo(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        if (cursor != null) {
+            int columnIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+            if (columnIndex >= 0) {
+                try {
+                    if (cursor.moveToFirst()) {
+                        return cursor.getString(columnIndex);
+                    }
+                } finally {
+                    cursor.close();
+                }
+            }
+            cursor.close();
+        }
+
+        String path = uri.getLastPathSegment();
+        return path == null || path.isBlank() ? "Arquivo selecionado" : path;
     }
 
     private void renderizarFavoritos() {
