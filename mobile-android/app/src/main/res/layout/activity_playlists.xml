@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown_dark">
+
+    <LinearLayout
+
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+
+        <Button
+            android:id="@+id/btnVoltarPlaylists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:backgroundTint="@color/pink_soft"
+            android:textColor="@color/brown_dark"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minhas playlists"
+            android:textColor="@color/pink_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escolha uma playlist para curtir seu momento"
+            android:textColor="@color/text_soft"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seus favoritos"
+            android:textColor="@color/text_light"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutFavoritos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playlists vindas do backend"
+            android:textColor="@color/text_light"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutPlaylistsApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Area tecnica da API (CRUD autenticado)"
+                android:textColor="@color/text_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPlaylistSelecionada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Nenhuma playlist selecionada."
+                android:textColor="@color/text_soft"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtNomePlaylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_primary"
+                android:hint="Nome da playlist"
+                android:inputType="text"
+                android:textColor="@color/text_light"
+                android:textColorHint="@color/text_soft" />
+
+            <TextView
+                android:id="@+id/txtStatusCrud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Login necessario apenas para testes tecnicos do CRUD."
+                android:textColor="@color/text_soft"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btnCriarPlaylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_strong"
+                android:text="Criar playlist (POST)"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnAtualizarPlaylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_primary"
+                android:text="Atualizar selecionada (PUT)"
+                android:textColor="@color/brown_dark" />
+
+            <Button
+                android:id="@+id/btnExcluirPlaylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_soft"
+                android:text="Excluir selecionada (DELETE)"
+                android:textColor="@color/brown_dark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Girl Coding Night"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 conteudos salvos"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnPlaylist1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abrir playlist"
+                android:backgroundTint="@color/pink_strong"
+                android:textColor="@color/white"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Soft Life Mood"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 conteudos salvos"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnPlaylist2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abrir playlist"
+                android:backgroundTint="@color/pink_primary"
+                android:textColor="@color/brown_dark"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Late Night Relax"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 conteudos salvos"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnPlaylist3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abrir playlist"
+                android:backgroundTint="@color/pink_soft"
+                android:textColor="@color/brown_dark"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

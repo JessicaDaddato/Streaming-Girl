@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.StreamingMobile" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pink_primary</item>
+        <item name="colorSecondary">@color/pink_soft</item>
+        <item name="android:statusBarColor">@color/brown_dark</item>
+        <item name="android:navigationBarColor">@color/brown_dark</item>
+        <item name="android:windowBackground">@color/brown_dark</item>
+    </style>
+
+    <style name="Theme.StreamingMobile" parent="Base.Theme.StreamingMobile" />
+</resources>

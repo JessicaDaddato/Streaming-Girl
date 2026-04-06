@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Android / Gradle
+.gradle/
+local.properties
+build/
+**/build/
+captures/
+.idea/
+*.iml
+
+# .NET
+bin/
+obj/
+**/bin/
+**/obj/
+
+# SQLite transient files
+*.db-wal
+*.db-shm
+
+# Logs
+*.log
+

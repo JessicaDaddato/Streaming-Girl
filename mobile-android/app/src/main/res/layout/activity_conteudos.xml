@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:backgroundTint="@color/pink_soft"
+            android:textColor="@color/brown_dark"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conteudos"
+            android:textColor="@color/pink_primary"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escolha algo para assistir no seu streaming girlie"
+            android:textColor="@color/text_soft"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Code e Pink"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tecnologia • Lifestyle"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnDetalhe1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver detalhes"
+                android:backgroundTint="@color/pink_strong"
+                android:textColor="@color/white"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Soft Life Diaries"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vlog • Rotina"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnDetalhe2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver detalhes"
+                android:backgroundTint="@color/pink_primary"
+                android:textColor="@color/brown_dark"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/brown_medium"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Late Night Playlist"
+                android:textColor="@color/text_light"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Musica • Relax"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnDetalhe3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver detalhes"
+                android:backgroundTint="@color/pink_soft"
+                android:textColor="@color/brown_dark"
+                android:layout_marginTop="12dp" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
