@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PerfilActivity extends AppCompatActivity {
 
-    Button btnVoltarPerfil, btnEditarPerfil, btnVerCurtidas;
+    Button btnVoltarPerfil, btnEditarPerfil, btnVerCurtidas, btnSairPerfil;
     TextView txtQuantidadeCurtidas, txtQuantidadePlaylists, txtQuantidadeCriadores;
     TextView txtNomePerfil, txtEmailPerfil;
 
@@ -24,6 +24,7 @@ public class PerfilActivity extends AppCompatActivity {
         btnVoltarPerfil = findViewById(R.id.btnVoltarPerfil);
         btnEditarPerfil = findViewById(R.id.btnEditarPerfil);
         btnVerCurtidas = findViewById(R.id.btnVerCurtidas);
+        btnSairPerfil = findViewById(R.id.btnSairPerfil);
 
         txtQuantidadeCurtidas = findViewById(R.id.txtQuantidadeCurtidas);
         txtQuantidadePlaylists = findViewById(R.id.txtQuantidadePlaylists);
@@ -44,6 +45,16 @@ public class PerfilActivity extends AppCompatActivity {
         btnVerCurtidas.setOnClickListener(v -> {
             Intent intent = new Intent(PerfilActivity.this, PlaylistsActivity.class);
             startActivity(intent);
+        });
+
+        btnSairPerfil.setOnClickListener(v -> {
+            AuthManager.clearToken(this);
+            Toast.makeText(this, "Sessao encerrada.", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(PerfilActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finishAffinity();
         });
 
         carregarResumoPerfil();
