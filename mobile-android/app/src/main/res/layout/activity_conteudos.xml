@@ -46,6 +46,7 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/txtTituloConteudo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Code e Pink"
@@ -54,6 +55,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtCategoriaConteudo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tecnologia • Lifestyle"
@@ -61,11 +63,20 @@
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
 
+            <TextView
+                android:id="@+id/txtStatsConteudo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 curtidas • 0 comentarios"
+                android:textColor="@color/pink_soft"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp" />
+
             <Button
                 android:id="@+id/btnDetalhe1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver detalhes"
+                android:text="Assistir agora"
                 android:backgroundTint="@color/pink_strong"
                 android:textColor="@color/white"
                 android:layout_marginTop="12dp" />
@@ -80,6 +91,7 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/txtTituloConteudo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Soft Life Diaries"
@@ -88,6 +100,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtCategoriaConteudo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vlog • Rotina"
@@ -95,11 +108,20 @@
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
 
+            <TextView
+                android:id="@+id/txtStatsConteudo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 curtidas • 0 comentarios"
+                android:textColor="@color/pink_soft"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp" />
+
             <Button
                 android:id="@+id/btnDetalhe2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver detalhes"
+                android:text="Assistir agora"
                 android:backgroundTint="@color/pink_primary"
                 android:textColor="@color/brown_dark"
                 android:layout_marginTop="12dp" />
@@ -114,6 +136,7 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/txtTituloConteudo3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Late Night Playlist"
@@ -122,6 +145,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtCategoriaConteudo3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Musica • Relax"
@@ -129,11 +153,20 @@
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
 
+            <TextView
+                android:id="@+id/txtStatsConteudo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 curtidas • 0 comentarios"
+                android:textColor="@color/pink_soft"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp" />
+
             <Button
                 android:id="@+id/btnDetalhe3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver detalhes"
+                android:text="Assistir agora"
                 android:backgroundTint="@color/pink_soft"
                 android:textColor="@color/brown_dark"
                 android:layout_marginTop="12dp" />

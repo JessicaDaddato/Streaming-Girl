@@ -39,6 +39,15 @@
             android:layout_marginTop="8dp" />
 
         <TextView
+            android:id="@+id/txtCriadorConteudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Por Canal Cultura Tech"
+            android:textColor="@color/pink_soft"
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/descricaoConteudo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,6 +55,32 @@
             android:textColor="@color/text_light"
             android:textSize="16sp"
             android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/brown_medium"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtCurtidasConteudo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0 curtidas"
+                android:textColor="@color/text_light"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtComentariosConteudo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 comentarios"
+                android:textColor="@color/text_light"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCurtir"
@@ -73,6 +108,36 @@
             android:backgroundTint="@color/pink_soft"
             android:textColor="@color/brown_dark"
             android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/edtComentario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/pink_primary"
+            android:hint="Escreva um comentario para a comunidade"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="2"
+            android:textColor="@color/text_light"
+            android:textColorHint="@color/text_soft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Comentarios em destaque"
+            android:textColor="@color/text_light"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/brown_medium"
+            android:orientation="vertical"
+            android:padding="16dp" />
 
 
 

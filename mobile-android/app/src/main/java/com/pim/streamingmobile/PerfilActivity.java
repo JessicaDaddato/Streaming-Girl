@@ -13,7 +13,7 @@ import java.util.List;
 public class PerfilActivity extends AppCompatActivity {
 
     Button btnVoltarPerfil, btnEditarPerfil, btnVerCurtidas;
-    TextView txtQuantidadeCurtidas, txtQuantidadePlaylists;
+    TextView txtQuantidadeCurtidas, txtQuantidadePlaylists, txtQuantidadeCriadores;
     TextView txtNomePerfil, txtEmailPerfil;
 
     @Override
@@ -27,11 +27,13 @@ public class PerfilActivity extends AppCompatActivity {
 
         txtQuantidadeCurtidas = findViewById(R.id.txtQuantidadeCurtidas);
         txtQuantidadePlaylists = findViewById(R.id.txtQuantidadePlaylists);
+        txtQuantidadeCriadores = findViewById(R.id.txtQuantidadeCriadores);
         txtNomePerfil = findViewById(R.id.txtNomePerfil);
         txtEmailPerfil = findViewById(R.id.txtEmailPerfil);
 
         txtQuantidadeCurtidas.setText("Conteudos curtidos: " + FavoritosManager.getFavoritos().size());
         txtQuantidadePlaylists.setText("Playlists disponiveis: carregando...");
+        txtQuantidadeCriadores.setText("Criadores seguidos: " + SocialManager.getQuantidadeCriadoresSeguidos());
 
         btnVoltarPerfil.setOnClickListener(v -> finish());
 
@@ -46,6 +48,13 @@ public class PerfilActivity extends AppCompatActivity {
 
         carregarResumoPerfil();
         carregarUsuario();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        txtQuantidadeCurtidas.setText("Conteudos curtidos: " + FavoritosManager.getFavoritos().size());
+        txtQuantidadeCriadores.setText("Criadores seguidos: " + SocialManager.getQuantidadeCriadoresSeguidos());
     }
 
     private void carregarResumoPerfil() {

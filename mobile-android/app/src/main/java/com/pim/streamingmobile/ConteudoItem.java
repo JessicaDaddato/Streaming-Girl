@@ -27,4 +27,10 @@ public class ConteudoItem {
                 : "um criador da plataforma";
         return tituloTexto + " disponivel no streaming, publicado por " + criadorNome + ".";
     }
+
+    public String getNomeCriador() {
+        return criador != null && criador.nome != null && !criador.nome.isBlank()
+                ? criador.nome
+                : "Criador nao informado";
+    }
 }

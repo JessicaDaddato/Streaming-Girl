@@ -141,6 +141,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/txtTituloDestaque"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Code e Pink"
@@ -150,12 +151,22 @@
                 android:layout_marginTop="8dp" />
 
             <TextView
+                android:id="@+id/txtDescricaoDestaque"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Uma seleção perfeita de conteúdo para quem ama tecnologia com estilo."
                 android:textColor="@color/text_soft"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp" />
+
+            <Button
+                android:id="@+id/btnAbrirDestaque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/pink_strong"
+                android:text="Abrir destaque"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <Button
@@ -203,6 +214,7 @@
             android:layout_marginBottom="12dp">
 
             <TextView
+                android:id="@+id/txtSugestao1Titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Soft Life Diaries"
@@ -211,12 +223,22 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtSugestao1Categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lifestyle • Vlog"
                 android:textColor="@color/text_soft"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnAbrirSugestao1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_primary"
+                android:text="Ver agora"
+                android:textColor="@color/brown_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -228,6 +250,7 @@
             android:layout_marginBottom="12dp">
 
             <TextView
+                android:id="@+id/txtSugestao2Titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Late Night Playlist"
@@ -236,12 +259,22 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtSugestao2Categoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Música • Relax"
                 android:textColor="@color/text_soft"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp" />
+
+            <Button
+                android:id="@+id/btnAbrirSugestao2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/pink_soft"
+                android:text="Abrir conteudo"
+                android:textColor="@color/brown_dark" />
         </LinearLayout>
 
     </LinearLayout>
