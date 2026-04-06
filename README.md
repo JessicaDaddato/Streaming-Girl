@@ -1,4 +1,4 @@
-talhe importante: como README do GitHub, o ideal é usar caminhos relativos e não absolutos para links internos. Se você quiser, eu posso fazer uma segunda passada rapidinha para deixá-lo 100% otimizado para publicação no GitHub e já também commitar isso.
+Detalhe importante: como README do GitHub, o ideal é usar caminhos relativos e não absolutos para links internos. Se você quiser, eu posso fazer uma segunda passada rapidinha para deixá-lo 100% otimizado para publicação no GitHub e já também commitar isso.
 
 
 1 arquivo alterado
