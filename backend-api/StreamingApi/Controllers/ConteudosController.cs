@@ -27,6 +27,25 @@ public class ConteudosController : ControllerBase
         var conteudos = _context.Conteudos
             .Include(c => c.Criador)
             .Include(c => c.ItensPlaylist)
+            .Select(c => new
+            {
+                c.ID,
+                c.Titulo,
+                c.Tipo,
+                c.CriadorID,
+                Criador = c.Criador == null
+                    ? null
+                    : new
+                    {
+                        c.Criador.ID,
+                        c.Criador.Nome
+                    },
+                ItensPlaylist = c.ItensPlaylist.Select(ip => new
+                {
+                    ip.PlaylistID,
+                    ip.ConteudoID
+                }).ToList()
+            })
             .ToList();
 
         return Ok(conteudos);
@@ -39,7 +58,27 @@ public class ConteudosController : ControllerBase
         var conteudo = _context.Conteudos
             .Include(c => c.Criador)
             .Include(c => c.ItensPlaylist)
-            .FirstOrDefault(c => c.ID == id);
+            .Where(c => c.ID == id)
+            .Select(c => new
+            {
+                c.ID,
+                c.Titulo,
+                c.Tipo,
+                c.CriadorID,
+                Criador = c.Criador == null
+                    ? null
+                    : new
+                    {
+                        c.Criador.ID,
+                        c.Criador.Nome
+                    },
+                ItensPlaylist = c.ItensPlaylist.Select(ip => new
+                {
+                    ip.PlaylistID,
+                    ip.ConteudoID
+                }).ToList()
+            })
+            .FirstOrDefault();
 
         if (conteudo == null)
         {

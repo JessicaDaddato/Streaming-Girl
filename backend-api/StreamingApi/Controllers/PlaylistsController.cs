@@ -24,7 +24,27 @@ public class PlaylistsController : ControllerBase
     [AllowAnonymous]
     public ActionResult<IEnumerable<Playlist>> GetAll()
     {
-        var playlists = _playlistRepository.GetAllPlaylists();
+        var playlists = _playlistRepository.GetAllPlaylists()
+            .Select(p => new
+            {
+                p.ID,
+                p.Nome,
+                p.UsuarioID,
+                Usuario = p.Usuario == null
+                    ? null
+                    : new
+                    {
+                        p.Usuario.ID,
+                        p.Usuario.Nome,
+                        p.Usuario.Email
+                    },
+                ItensPlaylist = p.ItensPlaylist.Select(ip => new
+                {
+                    ip.PlaylistID,
+                    ip.ConteudoID
+                }).ToList()
+            })
+            .ToList();
         return Ok(playlists);
     }
 
@@ -32,12 +52,32 @@ public class PlaylistsController : ControllerBase
     [AllowAnonymous]
     public ActionResult<Playlist> GetById(int id)
     {
-        var playlist = _playlistRepository.GetPlaylistByID(id);
+        var playlistBase = _playlistRepository.GetPlaylistByID(id);
 
-        if (playlist == null)
+        if (playlistBase == null)
         {
             return NotFound("Playlist não encontrada.");
         }
+
+        var playlist = new
+        {
+            playlistBase.ID,
+            playlistBase.Nome,
+            playlistBase.UsuarioID,
+            Usuario = playlistBase.Usuario == null
+                ? null
+                : new
+                {
+                    playlistBase.Usuario.ID,
+                    playlistBase.Usuario.Nome,
+                    playlistBase.Usuario.Email
+                },
+            ItensPlaylist = playlistBase.ItensPlaylist.Select(ip => new
+            {
+                ip.PlaylistID,
+                ip.ConteudoID
+            }).ToList()
+        };
 
         return Ok(playlist);
     }

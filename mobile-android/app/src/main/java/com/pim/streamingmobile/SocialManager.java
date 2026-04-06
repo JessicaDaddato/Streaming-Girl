@@ -17,6 +17,8 @@ public final class SocialManager {
     }
 
     private static void garantirSeed(String titulo) {
+        titulo = normalizarTitulo(titulo);
+
         if (likesPorConteudo.containsKey(titulo)) {
             return;
         }
@@ -29,12 +31,22 @@ public final class SocialManager {
         comentariosPorConteudo.put(titulo, comentarios);
     }
 
+    private static String normalizarTitulo(String titulo) {
+        if (titulo == null || titulo.isBlank()) {
+            return "Conteudo sem titulo";
+        }
+
+        return titulo;
+    }
+
     public static int getLikes(String titulo) {
+        titulo = normalizarTitulo(titulo);
         garantirSeed(titulo);
         return likesPorConteudo.get(titulo);
     }
 
     public static int like(String titulo) {
+        titulo = normalizarTitulo(titulo);
         garantirSeed(titulo);
         int total = likesPorConteudo.get(titulo) + 1;
         likesPorConteudo.put(titulo, total);
@@ -42,11 +54,13 @@ public final class SocialManager {
     }
 
     public static List<String> getComentarios(String titulo) {
+        titulo = normalizarTitulo(titulo);
         garantirSeed(titulo);
         return new ArrayList<>(comentariosPorConteudo.get(titulo));
     }
 
     public static void adicionarComentario(String titulo, String comentario) {
+        titulo = normalizarTitulo(titulo);
         garantirSeed(titulo);
         comentariosPorConteudo.get(titulo).add(0, comentario);
     }

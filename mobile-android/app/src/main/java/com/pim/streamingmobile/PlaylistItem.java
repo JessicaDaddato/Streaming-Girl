@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class PlaylistItem {
-    @SerializedName("ID")
+    @SerializedName(value = "id", alternate = {"ID"})
     public int id;
-    @SerializedName("Nome")
+    @SerializedName(value = "nome", alternate = {"Nome"})
     public String nome;
-    @SerializedName("UsuarioID")
+    @SerializedName(value = "usuarioId", alternate = {"UsuarioID"})
     public int usuarioId;
-    @SerializedName("ItensPlaylist")
+    @SerializedName(value = "itensPlaylist", alternate = {"ItensPlaylist"})
     public List<ItemPlaylistItem> itensPlaylist;
 
     public int getQuantidadeItens() {

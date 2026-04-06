@@ -26,6 +26,18 @@ public class UsuariosController : ControllerBase
     {
         var usuarios = _context.Usuarios
             .Include(u => u.Playlists)
+            .Select(u => new
+            {
+                u.ID,
+                u.Nome,
+                u.Email,
+                Playlists = u.Playlists.Select(p => new
+                {
+                    p.ID,
+                    p.Nome,
+                    p.UsuarioID
+                }).ToList()
+            })
             .ToList();
 
         return Ok(usuarios);
@@ -37,7 +49,20 @@ public class UsuariosController : ControllerBase
     {
         var usuario = _context.Usuarios
             .Include(u => u.Playlists)
-            .FirstOrDefault(u => u.ID == id);
+            .Where(u => u.ID == id)
+            .Select(u => new
+            {
+                u.ID,
+                u.Nome,
+                u.Email,
+                Playlists = u.Playlists.Select(p => new
+                {
+                    p.ID,
+                    p.Nome,
+                    p.UsuarioID
+                }).ToList()
+            })
+            .FirstOrDefault();
 
         if (usuario == null)
         {

@@ -3,9 +3,9 @@ package com.pim.streamingmobile;
 import com.google.gson.annotations.SerializedName;
 
 public class ItemPlaylistItem {
-    @SerializedName("PlaylistID")
+    @SerializedName(value = "playlistId", alternate = {"PlaylistID"})
     public int playlistId;
 
-    @SerializedName("ConteudoID")
+    @SerializedName(value = "conteudoId", alternate = {"ConteudoID"})
     public int conteudoId;
 }

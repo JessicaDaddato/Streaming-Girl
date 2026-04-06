@@ -3,13 +3,13 @@ package com.pim.streamingmobile;
 import com.google.gson.annotations.SerializedName;
 
 public class ConteudoItem {
-    @SerializedName("ID")
+    @SerializedName(value = "id", alternate = {"ID"})
     public int id;
-    @SerializedName("Titulo")
+    @SerializedName(value = "titulo", alternate = {"Titulo"})
     public String titulo;
-    @SerializedName("Tipo")
+    @SerializedName(value = "tipo", alternate = {"Tipo"})
     public String tipo;
-    @SerializedName("Criador")
+    @SerializedName(value = "criador", alternate = {"Criador"})
     public CriadorItem criador;
 
     public String getCategoria() {
